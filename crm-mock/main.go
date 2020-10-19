@@ -39,6 +39,7 @@ func loadCustomer(id string) Customer {
 
 	for _, customer := range customers {
 		if customer.Id == id {
+			println(fmt.Sprintf("%s%s%s", "Customer '", customer.Name, "' found"))
 			return customer
 		}
 	}

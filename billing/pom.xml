@@ -25,7 +25,9 @@
         <maven.min.version>3.2.1</maven.min.version>
         <java.version>11</java.version>
         <kotlin.version>1.4.10</kotlin.version>
+        <kotlinx.serialization-json.version>1.0.0</kotlinx.serialization-json.version>
 
+        <khttp.version>1.0.0</khttp.version>
         <elasticsearch.version>7.9.2</elasticsearch.version>
         <jackson-module-kotlin.version>2.11.2</jackson-module-kotlin.version>
 
@@ -59,9 +61,15 @@
         </dependency>
 
         <dependency>
+            <groupId>org.jetbrains.kotlinx</groupId>
+            <artifactId>kotlinx-serialization-json-jvm</artifactId>
+            <version>${kotlinx.serialization-json.version}</version>
+        </dependency>
+
+        <dependency>
             <groupId>khttp</groupId>
             <artifactId>khttp</artifactId>
-            <version>1.0.0</version>
+            <version>${khttp.version}</version>
         </dependency>
 
         <dependency>
@@ -104,12 +112,9 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
             <plugin>
-                <artifactId>kotlin-maven-plugin</artifactId>
                 <groupId>org.jetbrains.kotlin</groupId>
+                <artifactId>kotlin-maven-plugin</artifactId>
                 <version>${kotlin.version}</version>
-                <configuration>
-                    <jvmTarget>11</jvmTarget>
-                </configuration>
                 <executions>
                     <execution>
                         <id>compile</id>
@@ -129,6 +134,19 @@
                         </configuration>
                     </execution>
                 </executions>
+                <configuration>
+                    <jvmTarget>11</jvmTarget>
+                    <compilerPlugins>
+                        <plugin>kotlinx-serialization</plugin>
+                    </compilerPlugins>
+                </configuration>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.jetbrains.kotlin</groupId>
+                        <artifactId>kotlin-maven-serialization</artifactId>
+                        <version>${kotlin.version}</version>
+                    </dependency>
+                </dependencies>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -153,8 +171,18 @@
 
     <repositories>
         <repository>
+            <id>jcenter</id>
+            <url>https://kotlin.bintray.com/kotlinx</url>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
+        <repository>
             <id>spring-lib</id>
             <url>https://repo.spring.io/libs-release/</url>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
         </repository>
     </repositories>
 </project>

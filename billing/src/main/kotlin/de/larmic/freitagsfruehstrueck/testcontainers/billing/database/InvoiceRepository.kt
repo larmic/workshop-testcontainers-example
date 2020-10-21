@@ -27,14 +27,12 @@ class InvoiceRepository(private val restHighLevelClient: RestHighLevelClient) {
     }
 
     fun findBy(id: String): InvoiceDocument? {
-        val getRequest = GetRequest(documentIndex, id)
-        val getResponse = restHighLevelClient.get(getRequest, RequestOptions.DEFAULT)
+        val getResponse = restHighLevelClient.getById(id)
         return when (getResponse.isExists) {
-            true -> {
-                val sourceAsString = getResponse.sourceAsString
-                return mapper.readValue(sourceAsString, InvoiceDocument::class.java)
-            }
+            true -> mapper.readValue(getResponse.sourceAsString, InvoiceDocument::class.java)
             false -> null
         }
     }
+
+    private fun RestHighLevelClient.getById(id: String) = this.get(GetRequest(documentIndex, id), RequestOptions.DEFAULT)
 }

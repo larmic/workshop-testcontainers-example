@@ -22,11 +22,8 @@ class InvoiceController(private val crmClient: CrmClient,
     }
 
     private fun Customer.createInvoice() = """
-            Hi $name
-            
+            Hi $name,
             your invoice for bank account $iban is created!
-            
-            Greets!
-        """.trimIndent()
+            Greets!""".trimIndent()
 
 }

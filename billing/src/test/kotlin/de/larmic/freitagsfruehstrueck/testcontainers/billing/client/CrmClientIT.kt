@@ -1,6 +1,6 @@
 package de.larmic.freitagsfruehstrueck.testcontainers.billing.client
 
-import de.larmic.freitagsfruehstrueck.testcontainers.billing.testing.CrmMockContextInitializer
+import de.larmic.freitagsfruehstrueck.testcontainers.billing.testing.ComposeContextInitializer
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.extension.ExtendWith
@@ -13,7 +13,7 @@ import org.springframework.test.context.junit.jupiter.SpringExtension
 @ExtendWith(SpringExtension::class)
 @SpringBootTest(classes = [CrmClient::class])
 @ActiveProfiles("it")
-@ContextConfiguration(initializers = [CrmMockContextInitializer::class])
+@ContextConfiguration(initializers = [ComposeContextInitializer::class])
 internal class CrmClientIT {
 
     @Autowired

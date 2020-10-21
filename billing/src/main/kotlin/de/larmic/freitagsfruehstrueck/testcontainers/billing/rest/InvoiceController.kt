@@ -12,7 +12,7 @@ class InvoiceController(private val crmClient: CrmClient,
     @PutMapping("/{customerId}")
     fun createInvoiceForCustomer(@PathVariable customerId: String): String {
         val customer = crmClient.readCustomer(customerId)
-        val invoice = customer.createInvoice()
+        val invoice = createInvoice(customer)
         return invoiceRepository.store(invoice)
     }
 
@@ -21,9 +21,9 @@ class InvoiceController(private val crmClient: CrmClient,
         return invoiceRepository.findBy(invoiceId)?.text.orEmpty()
     }
 
-    private fun Customer.createInvoice() = """
-            Hi $name,
-            your invoice for bank account $iban is created!
+    private fun createInvoice(customer: Customer) = """
+            Hi ${customer.name},
+            your invoice for bank account ${customer.iban} is created!
             Greets!""".trimIndent()
 
 }

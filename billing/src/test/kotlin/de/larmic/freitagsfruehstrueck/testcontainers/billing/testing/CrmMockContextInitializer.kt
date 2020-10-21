@@ -5,6 +5,7 @@ import org.springframework.context.ApplicationContextInitializer
 import org.springframework.context.ConfigurableApplicationContext
 import org.testcontainers.containers.GenericContainer
 import org.testcontainers.containers.wait.strategy.Wait
+import org.testcontainers.utility.DockerImageName
 
 class CrmMockContextInitializer : ApplicationContextInitializer<ConfigurableApplicationContext> {
 
@@ -23,4 +24,4 @@ class CrmMockContextInitializer : ApplicationContextInitializer<ConfigurableAppl
     }
 }
 
-class KGenericContainer(imageName: String) : GenericContainer<KGenericContainer>(imageName)
+class KGenericContainer(imageName: String) : GenericContainer<KGenericContainer>(DockerImageName.parse(imageName))

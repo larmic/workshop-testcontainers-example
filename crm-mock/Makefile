@@ -6,8 +6,8 @@
 # -a              -> force rebuilding of packages that are already up-to-date.
 # -o my-test-x    -> force to build an executable my-test-x file (instead of default https://golang.org/cmd/go/#hdr-Compile_packages_and_dependencies)
 
-CONTAINER_NAME=freitagsfruehstueck-crm-mock
-IMAGE_NAME=larmic/freitagsfruehstueck-crm-mock
+CONTAINER_NAME=freitagsfruehstueck-testcontainers-crm-mock
+IMAGE_NAME=larmic/freitagsfruehstueck-testcontainers-crm-mock
 IMAGE_TAG=latest
 
 run:

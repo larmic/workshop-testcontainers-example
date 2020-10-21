@@ -1,6 +1,6 @@
-package de.larmic.freitagsfruehstrueck.testcontainers.billing.elasticsearch
+package de.larmic.freitagsfruehstrueck.testcontainers.billing.database
 
-import de.larmic.freitagsfruehstrueck.testcontainers.billing.elasticsearch.InvoiceDocument.Companion.documentIndex
+import de.larmic.freitagsfruehstrueck.testcontainers.billing.database.InvoiceDocument.Companion.documentIndex
 import org.elasticsearch.client.RequestOptions
 import org.elasticsearch.client.RestHighLevelClient
 import org.elasticsearch.client.indices.CreateIndexRequest

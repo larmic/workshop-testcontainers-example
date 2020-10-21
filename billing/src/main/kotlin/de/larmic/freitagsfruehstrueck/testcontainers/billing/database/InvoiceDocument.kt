@@ -1,4 +1,4 @@
-package de.larmic.freitagsfruehstrueck.testcontainers.billing.elasticsearch
+package de.larmic.freitagsfruehstrueck.testcontainers.billing.database
 
 class InvoiceDocument(val text: String) {
     companion object {

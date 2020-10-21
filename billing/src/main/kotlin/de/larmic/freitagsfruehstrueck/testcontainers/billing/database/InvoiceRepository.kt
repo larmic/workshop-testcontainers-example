@@ -1,15 +1,14 @@
-package de.larmic.freitagsfruehstrueck.testcontainers.billing.elasticsearch
+package de.larmic.freitagsfruehstrueck.testcontainers.billing.database
 
 import com.fasterxml.jackson.databind.DeserializationFeature
 import com.fasterxml.jackson.databind.ObjectMapper
 import com.fasterxml.jackson.module.kotlin.KotlinModule
-import de.larmic.freitagsfruehstrueck.testcontainers.billing.elasticsearch.InvoiceDocument.Companion.documentIndex
+import de.larmic.freitagsfruehstrueck.testcontainers.billing.database.InvoiceDocument.Companion.documentIndex
 import org.elasticsearch.action.get.GetRequest
 import org.elasticsearch.action.index.IndexRequest
 import org.elasticsearch.client.RequestOptions
 import org.elasticsearch.client.RestHighLevelClient
 import org.elasticsearch.common.xcontent.XContentType
-import org.springframework.stereotype.Repository
 import org.springframework.stereotype.Service
 
 @Service

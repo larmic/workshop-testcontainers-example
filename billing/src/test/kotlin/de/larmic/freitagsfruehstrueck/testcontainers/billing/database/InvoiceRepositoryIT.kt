@@ -1,4 +1,4 @@
-package de.larmic.freitagsfruehstrueck.testcontainers.billing.elasticsearch
+package de.larmic.freitagsfruehstrueck.testcontainers.billing.database
 
 import de.larmic.freitagsfruehstrueck.testcontainers.billing.testing.ElasticsearchContextInitializer
 import de.larmic.freitagsfruehstrueck.testcontainers.billing.testing.createIndex

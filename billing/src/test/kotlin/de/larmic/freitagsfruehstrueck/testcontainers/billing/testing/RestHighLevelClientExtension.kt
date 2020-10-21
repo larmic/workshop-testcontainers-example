@@ -1,6 +1,6 @@
 package de.larmic.freitagsfruehstrueck.testcontainers.billing.testing
 
-import de.larmic.freitagsfruehstrueck.testcontainers.billing.elasticsearch.InvoiceDocument
+import de.larmic.freitagsfruehstrueck.testcontainers.billing.database.InvoiceDocument
 import org.elasticsearch.action.admin.indices.delete.DeleteIndexRequest
 import org.elasticsearch.action.admin.indices.refresh.RefreshRequest
 import org.elasticsearch.client.RequestOptions

@@ -6,7 +6,7 @@ import de.larmic.freitagsfruehstrueck.testcontainers.billing.database.InvoiceRep
 import org.springframework.web.bind.annotation.*
 
 @RestController
-class BillingController(private val crmClient: CrmClient,
+class InvoiceController(private val crmClient: CrmClient,
                         private val invoiceRepository: InvoiceRepository) {
 
     @PutMapping("/{customerId}")

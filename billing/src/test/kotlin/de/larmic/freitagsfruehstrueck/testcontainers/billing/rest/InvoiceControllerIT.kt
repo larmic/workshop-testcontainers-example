@@ -1,11 +1,7 @@
 package de.larmic.freitagsfruehstrueck.testcontainers.billing.rest
 
 import de.larmic.freitagsfruehstrueck.testcontainers.billing.testing.ComposeContextInitializer
-import de.larmic.freitagsfruehstrueck.testcontainers.billing.testing.createIndex
-import de.larmic.freitagsfruehstrueck.testcontainers.billing.testing.deleteIndexIfExists
 import org.assertj.core.api.Assertions.assertThat
-import org.elasticsearch.client.RestHighLevelClient
-import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.extension.ExtendWith
 import org.springframework.beans.factory.annotation.Autowired
@@ -25,14 +21,6 @@ internal class InvoiceControllerIT {
 
     @Autowired
     private lateinit var testRestTemplate: TestRestTemplate
-
-    @Autowired
-    private lateinit var restHighLevelClient: RestHighLevelClient
-
-    @BeforeEach
-    fun setUp() {
-        restHighLevelClient.deleteIndexIfExists().createIndex()
-    }
 
     @Test
     internal fun `happy path system integration test`() {

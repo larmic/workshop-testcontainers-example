@@ -14,7 +14,9 @@ class CrmMockContextInitializer : ApplicationContextInitializer<ConfigurableAppl
 
         val mappedPort = crmMockContainer.getMappedPort(8080)
 
-        TestPropertyValues.of("crm.rest.url=http://localhost:$mappedPort").applyTo(context.environment)
+        TestPropertyValues.of(
+                "crm.rest.url=http://localhost:$mappedPort"
+        ).applyTo(context.environment)
     }
 
     companion object {

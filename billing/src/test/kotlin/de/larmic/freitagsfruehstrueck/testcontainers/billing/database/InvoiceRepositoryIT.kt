@@ -1,12 +1,7 @@
 package de.larmic.freitagsfruehstrueck.testcontainers.billing.database
 
 import de.larmic.freitagsfruehstrueck.testcontainers.billing.testing.ElasticsearchContextInitializer
-import de.larmic.freitagsfruehstrueck.testcontainers.billing.testing.createIndex
-import de.larmic.freitagsfruehstrueck.testcontainers.billing.testing.deleteIndexIfExists
-import de.larmic.freitagsfruehstrueck.testcontainers.billing.testing.refreshIndex
 import org.assertj.core.api.Assertions.assertThat
-import org.elasticsearch.client.RestHighLevelClient
-import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.extension.ExtendWith
 import org.springframework.beans.factory.annotation.Autowired
@@ -22,20 +17,10 @@ import org.springframework.test.context.junit.jupiter.SpringExtension
 internal class InvoiceRepositoryIT {
 
     @Autowired
-    private lateinit var restHighLevelClient: RestHighLevelClient
-
-    @Autowired
     private lateinit var invoiceRepository: InvoiceRepository
-
-    @BeforeEach
-    fun setUp() {
-        restHighLevelClient.deleteIndexIfExists().createIndex()
-    }
 
     @Test
     fun `store and load an invoice document`() {
-        restHighLevelClient.refreshIndex()
-
         val id = invoiceRepository.store("Invoice-test")
         assertThat(id).isNotBlank
 

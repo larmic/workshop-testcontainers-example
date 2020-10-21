@@ -9,6 +9,7 @@ class ElasticsearchContextInitializer : ApplicationContextInitializer<Configurab
 
     override fun initialize(context: ConfigurableApplicationContext) {
         elasticsearch.start()
+
         TestPropertyValues.of(
                 "spring.elasticsearch.rest.uris=${elasticsearch.httpHostAddress}"
         ).applyTo(context.environment)

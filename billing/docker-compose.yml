@@ -12,6 +12,14 @@ services:
     networks:
       - freitagsfruehstueck-testcontainers
 
+  crm:
+    image: larmic/freitagsfruehstueck-crm-mock:latest
+    container_name: freitagsfruehstueck-testcontainers-crm
+    ports:
+    - 8081:8080
+    networks:
+      - freitagsfruehstueck-testcontainers
+
 networks:
   freitagsfruehstueck-testcontainers:
     driver: bridge

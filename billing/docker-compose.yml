@@ -13,7 +13,7 @@ services:
       - freitagsfruehstueck-testcontainers
 
   crm:
-    image: larmic/freitagsfruehstueck-crm-mock:latest
+    image: freitagsfruehstueck-testcontainers-crm-mock:latest
     container_name: freitagsfruehstueck-testcontainers-crm
     ports:
     - 8081:8080

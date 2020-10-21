@@ -47,8 +47,13 @@ func loadCustomer(id string) Customer {
 	return Customer{}
 }
 
+func getRootRequest(writer http.ResponseWriter, _ *http.Request) {
+	_, _ = writer.Write([]byte("Hello World! crm-mock is running..."))
+}
+
 func main() {
 	router := mux.NewRouter()
+	router.HandleFunc("/", getRootRequest).Methods("GET")
 	router.HandleFunc("/api/customer/{id}", CustomerHandler).Methods("GET")
 	log.Fatal(http.ListenAndServe(":8080", router))
 }

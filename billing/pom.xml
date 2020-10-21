@@ -59,6 +59,12 @@
         </dependency>
 
         <dependency>
+            <groupId>khttp</groupId>
+            <artifactId>khttp</artifactId>
+            <version>1.0.0</version>
+        </dependency>
+
+        <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
@@ -144,4 +150,11 @@
             </plugin>
         </plugins>
     </build>
+
+    <repositories>
+        <repository>
+            <id>spring-lib</id>
+            <url>https://repo.spring.io/libs-release/</url>
+        </repository>
+    </repositories>
 </project>

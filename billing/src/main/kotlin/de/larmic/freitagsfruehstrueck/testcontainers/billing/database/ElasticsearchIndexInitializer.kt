@@ -24,8 +24,6 @@ class ElasticsearchIndexInitializer(private val restHighLevelClient: RestHighLev
         if (indexDoesNotExists(index)) {
             // see https://www.elastic.co/guide/en/elasticsearch/client/java-rest/6.x/java-rest-high-create-index.html
             val createIndexRequest = CreateIndexRequest(index)
-            // mapping will be created automatically with first document index
-            //createIndexRequest.mapping(type, "message", "type=text")
             restHighLevelClient.indices().create(createIndexRequest, RequestOptions.DEFAULT)
         }
     }

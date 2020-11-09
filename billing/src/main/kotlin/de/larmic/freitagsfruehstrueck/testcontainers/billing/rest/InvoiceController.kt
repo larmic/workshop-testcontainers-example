@@ -17,9 +17,7 @@ class InvoiceController(private val crmClient: CrmClient,
     }
 
     @GetMapping("/{invoiceId}")
-    fun getInvoice(@PathVariable invoiceId: String): String {
-        return invoiceRepository.findBy(invoiceId)?.text.orEmpty()
-    }
+    fun getInvoice(@PathVariable invoiceId: String) = invoiceRepository.findBy(invoiceId)?.text.orEmpty()
 
     private fun createInvoice(customer: Customer) = """
             Hi ${customer.name},

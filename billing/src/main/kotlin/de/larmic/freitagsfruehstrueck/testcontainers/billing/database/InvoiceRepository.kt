@@ -19,10 +19,7 @@ class InvoiceRepository(private val restHighLevelClient: RestHighLevelClient) {
             .registerModule(KotlinModule())
 
     fun store(invoice: String): String {
-        val document = InvoiceDocument(text = invoice)
-        val writeValueAsString = mapper.writeValueAsString(document)
-        val request = IndexRequest(documentIndex)
-        request.source(writeValueAsString, XContentType.JSON)
+        val request = InvoiceDocument(text = invoice).mapToRequest()
         return restHighLevelClient.index(request, RequestOptions.DEFAULT).id
     }
 
@@ -35,4 +32,11 @@ class InvoiceRepository(private val restHighLevelClient: RestHighLevelClient) {
     }
 
     private fun RestHighLevelClient.getById(id: String) = this.get(GetRequest(documentIndex, id), RequestOptions.DEFAULT)
+
+    private fun InvoiceDocument.mapToRequest() : IndexRequest {
+        val writeValueAsString = mapper.writeValueAsString(this)
+        val request = IndexRequest(documentIndex)
+        request.source(writeValueAsString, XContentType.JSON)
+        return request
+    }
 }

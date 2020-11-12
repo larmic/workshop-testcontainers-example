@@ -16,6 +16,6 @@ class ElasticsearchContextInitializer : ApplicationContextInitializer<Configurab
     }
 
     companion object {
-        val elasticsearch = ElasticsearchContainer("docker.elastic.co/elasticsearch/elasticsearch-oss:7.9.2")
+        val elasticsearch = ElasticsearchContainer("docker.elastic.co/elasticsearch/elasticsearch-oss:7.10.0")
     }
 }

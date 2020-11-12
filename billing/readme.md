@@ -2,6 +2,8 @@
 
 An example project to show how to use [Testcontainers](https://www.testcontainers.org/) in a spring boot application.
 
+This application uses an [Elasticsearch](https://www.elastic.co/de/elasticsearch/) as database and the [crm-mock](../crm-mock)  as mock for SAP.
+
 ## Requirements
 
 * Maven 3.5.x 

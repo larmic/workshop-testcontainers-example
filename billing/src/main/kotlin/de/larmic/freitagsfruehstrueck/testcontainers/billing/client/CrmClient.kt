@@ -14,7 +14,7 @@ class CrmClient(@Value("\${crm.rest.url}") private var crmUrl: String) {
 
     private val logger = LoggerFactory.getLogger(this::class.java)
 
-    fun readCustomer(customerId: String) : Customer {
+    fun readCustomer(customerId: String): Customer {
         logger.info("Load customer '$customerId' from crm")
         return get("$crmUrl/api/customer/$customerId").decodeToCustomer()
     }

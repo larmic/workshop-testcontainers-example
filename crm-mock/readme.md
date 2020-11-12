@@ -16,7 +16,7 @@ $ make docker-all                   # build and push docker image to hub.docker.
 $ make IMAGE_TAG="0.0.1" docker-all # build and push docker image with specific version
 ```
 
-# Run it native
+## Run it native
 
 ```sh 
 $ make run                                  # start native app 
@@ -24,7 +24,7 @@ $ curl http://localhost:8080/api/customer/1 # get customer 1 details
 $ ctrl+c                                    # stop native app
 ```
 
-# Run it using docker
+## Run it using docker
 
 ```sh 
 $ make docker-run                           # start docker image 

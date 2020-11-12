@@ -7,13 +7,13 @@ An example project to show how to use [Testcontainers](https://www.testcontainer
 * Maven 3.5.x 
 * Java 11.x
 
-# Testcontainers tests
+## Testcontainers tests
 
 * [CrmClientIT.kt](src/test/kotlin/de/larmic/freitagsfruehstrueck/testcontainers/billing/client/CrmClientIT.kt) (JUnit test)
 * [InvoiceRepositoryIT.kt](src/test/kotlin/de/larmic/freitagsfruehstrueck/testcontainers/billing/database/InvoiceRepositoryIT.kt) (Elasticsearch test)
 * [InvoiceControllerIT.kt](src/test/kotlin/de/larmic/freitagsfruehstrueck/testcontainers/billing/rest/InvoiceControllerIT.kt) (Happy path docker-compose test)
 
-# Test it manually
+## Test it manually
 
 ```sh 
 $ mvn clean package                         # build application

@@ -18,7 +18,7 @@ A _billing_ services to create and store invoices.
 
 ## Challenge
 
-Write an application with integrated tests to the database and SAP. Additionally there should be a happy path system test.
+Write an application with integrated tests to the database and SAP. Additionally there should be a happy path system integration test.
 
 ## Solution
 

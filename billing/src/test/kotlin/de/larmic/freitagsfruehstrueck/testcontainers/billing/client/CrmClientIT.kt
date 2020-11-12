@@ -1,31 +1,37 @@
 package de.larmic.freitagsfruehstrueck.testcontainers.billing.client
 
-import de.larmic.freitagsfruehstrueck.testcontainers.billing.testing.ComposeContextInitializer
-import de.larmic.freitagsfruehstrueck.testcontainers.billing.testing.CrmMockContextInitializer
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
-import org.junit.jupiter.api.extension.ExtendWith
-import org.springframework.beans.factory.annotation.Autowired
-import org.springframework.boot.test.context.SpringBootTest
-import org.springframework.test.context.ActiveProfiles
-import org.springframework.test.context.ContextConfiguration
-import org.springframework.test.context.junit.jupiter.SpringExtension
+import org.testcontainers.containers.GenericContainer
+import org.testcontainers.containers.wait.strategy.Wait
+import org.testcontainers.junit.jupiter.Container
+import org.testcontainers.junit.jupiter.Testcontainers
+import org.testcontainers.utility.DockerImageName
 
-@ExtendWith(SpringExtension::class)
-@SpringBootTest(classes = [CrmClient::class])
-@ActiveProfiles("it")
-@ContextConfiguration(initializers = [CrmMockContextInitializer::class])
+@Testcontainers
 internal class CrmClientIT {
 
-    @Autowired
-    private lateinit var crmClient: CrmClient
+    @Container
+    private val crmContainer = KGenericContainer(IMAGE_NAME)
+            .withExposedPorts(CONTAINER_PORT)
+            .waitingFor(Wait.forHttp("/").forStatusCode(200))
 
     @Test
     internal fun `read customer`() {
-        val customer = crmClient.readCustomer("1")
+        val customer = CrmClient(crmContainer.mappedUrl).readCustomer("1")
 
         assertThat(customer.id).isEqualTo("1")
         assertThat(customer.name).isEqualTo("Christel Grimm")
         assertThat(customer.iban).isEqualTo("DE11434350924181929806")
     }
+
+    companion object Constants {
+        const val IMAGE_NAME = "larmic/freitagsfruehstueck-testcontainers-crm-mock:latest"
+        const val CONTAINER_PORT = 8080
+    }
 }
+
+class KGenericContainer(imageName: String) : GenericContainer<KGenericContainer>(DockerImageName.parse(imageName))
+
+private val KGenericContainer.mappedUrl: String
+    get() = "http://localhost:${this.getMappedPort(CrmClientIT.CONTAINER_PORT)}"

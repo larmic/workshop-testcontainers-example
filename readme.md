@@ -1,6 +1,6 @@
 # Testcontainers example
 
-A demo during a _Freitagsfrühstück_ at [Neusta](https://www.team-neusta.de/) about test containers.
+A demo during a _Freitagsfrühstück_ at [Neusta](https://www.team-neusta.de/) about [Testcontainers](https://www.testcontainers.org/).
 
 ## Use case
 

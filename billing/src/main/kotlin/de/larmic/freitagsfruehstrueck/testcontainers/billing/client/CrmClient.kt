@@ -13,8 +13,9 @@ class CrmClient(@Value("\${crm.rest.url}") private var crmUrl: String) {
 
     fun readCustomer(customerId: String) = get("$crmUrl/api/customer/$customerId").decodeToCustomer()
 
-    private fun Response.decodeToCustomer() = Json.decodeFromString<Customer>(this.text)
 }
+
+private fun Response.decodeToCustomer() = Json.decodeFromString<Customer>(this.text)
 
 @Serializable
 class Customer(val id: String,

@@ -22,28 +22,20 @@ internal class InvoiceControllerIT {
     @Autowired
     private lateinit var testRestTemplate: TestRestTemplate
 
-    @Test
-    internal fun `happy path system integration test`() {
-        val invoiceId = testRestTemplate.createInvoice(customerId = "1")
-        val invoice = testRestTemplate.getInvoice(invoiceId = invoiceId)
-
-        assertThat(invoice).isEqualTo(expectedInvoice)
-    }
-
     private val expectedInvoice = """
             Hi Christel Grimm,
             your invoice for bank account DE11434350924181929806 is created!
             Greets!""".trimIndent()
 
-    private fun TestRestTemplate.createInvoice(customerId: String) : String {
-        val response = this.exchange("/$customerId", HttpMethod.PUT, null, String::class.java)
-        assertThat(response.statusCode).isEqualTo(HttpStatus.OK)
-        assertThat(response.body).isNotBlank
-        return response.body!!
+    @Test
+    internal fun `happy path system integration test`() {
+        val invoice = testRestTemplate.createInvoice(customerId = "1")
+
+        assertThat(invoice).isEqualTo(expectedInvoice)
     }
 
-    private fun TestRestTemplate.getInvoice(invoiceId: String): String {
-        val response = this.exchange("/$invoiceId", HttpMethod.GET, null, String::class.java)
+    private fun TestRestTemplate.createInvoice(customerId: String): String {
+        val response = this.exchange("/$customerId", HttpMethod.PUT, null, String::class.java)
         assertThat(response.statusCode).isEqualTo(HttpStatus.OK)
         assertThat(response.body).isNotBlank
         return response.body!!

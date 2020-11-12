@@ -24,4 +24,5 @@ Write an application with integrated tests to the database and SAP. Additionally
 
 1. Write a SAP [crm-mock](crm-mock)  to guarantee fast startup times. Furthermore, this mock provides a defined test set for the corresponding integration tests.
 2. Use [Testcontainers](https://www.testcontainers.org/) to start a suitable test environment.
+3. See [Billing demo](billing) to get some help
 
